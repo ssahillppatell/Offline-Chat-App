@@ -1,0 +1,10 @@
+.chat-container .chat .message {
+  background-color: #ccc;
+  margin-bottom: 1vh;
+}
+
+.chat-container .chat img {
+  width: 30vw;
+  height: auto;
+}
+/*# sourceMappingURL=chatCss.css.map */
