@@ -4,5 +4,5 @@
 
 > Install Dependencies
 - `npm install`
-> Run DEvelopment Server on PORT: 8080 
+> Run Development Server on PORT: 8080 
 - `npm run dev`

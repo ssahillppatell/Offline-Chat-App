@@ -18,7 +18,15 @@
 			<input type="submit" value="Send">
 		</form>
 		<br>
+		<form id="attachImage">
+			<label for="image">Attach Image:</label> <br>
+			<input type="file" name="image" required>
+			<br>
+			<input type="submit" value="Send Image">
+		</form>
+		<br>
 		<form id="attachFile">
+			<label for="file">Attach File:</label> <br>
 			<input type="file" name="file" required>
 			<br>
 			<input type="submit" value="Send File">
@@ -26,6 +34,7 @@
 	</div>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="./js/socket.io-stream.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 </html>

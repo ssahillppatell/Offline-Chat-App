@@ -3,6 +3,7 @@ const socket = io();
 let params = new window.URLSearchParams(window.location.search);
 const username = params.get('username');
 const newMessage = document.getElementById('newMessage');
+const attachImage = document.getElementById('attachImage');
 const attachFile = document.getElementById('attachFile');
 
 socket.on('connect', () => {
@@ -29,7 +30,14 @@ const addMessage = (msg) => {
 			<img src = "${msg.data}" />
 		`
 		newElement.src = msg.data;
+	} else if(msg.type == 'file') {
+		console.log(msg);
+		newElement.innerHTML=`
+			<span>${msg.username} ${msg.time}</span><br>
+			<a href="${msg.path}" download>${msg.name}</a>
+		`
 	}
+	
 	document.querySelector('.chat').appendChild(newElement);
 };
 
@@ -44,17 +52,30 @@ newMessage.addEventListener('submit', (e) => {
 	newMessage.reset();
 });
 
-attachFile.addEventListener('submit', (e) => {
+attachImage.addEventListener('submit', (e) => {
 	e.preventDefault();
-	const file = e.target.elements.file.files[0];
+	let image = e.target.elements.image.files[0];
 	const fileReader = new FileReader();
-	fileReader.readAsDataURL(file);
+	fileReader.readAsDataURL(image);
 	fileReader.onload = () => {
-		socket.emit('file-message', {
+		socket.emit('image-message', {
 			username: username,
 			type: 'image',
 			data: fileReader.result
 		});
 	};
+	attachImage.reset();
+});
+
+attachFile.addEventListener('submit', (e) => {
+	e.preventDefault();
+	let file = e.target.elements.file.files[0];
+	let stream = ss.createStream();
+    ss(socket).emit('file-message', stream, {
+		username: username,
+		name: file.name,
+		size: file.size
+	});
+    ss.createBlobReadStream(file).pipe(stream);
 	attachFile.reset();
 });
