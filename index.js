@@ -18,7 +18,11 @@ app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
 	socket.on('user-joined', (username) => {
-		console.log(`${username} Joined`);
+		msg = {
+			username: username,
+			type: 'user-joined'
+		}
+		io.emit('add-message', msg);
 	});
 
 	socket.on('new-message', (msg) => {
@@ -42,7 +46,7 @@ io.on('connection', (socket) => {
 	});
 
 	socket.on('disconnect', (socket) => {
-		console.log("User Disconnected");
+		console.log('1 user disconnected!');
 	});
 });
 

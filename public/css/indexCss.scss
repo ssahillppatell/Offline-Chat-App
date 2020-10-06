@@ -1,0 +1,38 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #ccc;
+	
+	#joinChat {
+		padding: 2vw 2vh;
+		width: 50vw;
+		margin: 30vh auto 0 auto;
+
+		background-color: white;
+		
+		label {
+			width: 30%;
+		}
+
+		input[type="text"] {
+			width: 100%;
+		}
+
+		input[type="submit"] {
+			margin-top: 2vh;
+			width: 100%;
+			padding: 1vh;
+		}
+	}
+}
+
+@media (max-width: 1000px) {
+	body {
+		#joinChat {
+			width: 80vw;
+		}
+	}
+}

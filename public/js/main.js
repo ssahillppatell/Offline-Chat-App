@@ -28,14 +28,16 @@ const addMessage = (msg) => {
 		newElement.innerHTML = `
 			<span>${msg.username} ${msg.time}</span><br>
 			<img src = "${msg.data}" />
-		`
-		newElement.src = msg.data;
+		`;
 	} else if(msg.type == 'file') {
-		console.log(msg);
 		newElement.innerHTML=`
 			<span>${msg.username} ${msg.time}</span><br>
 			<a href="${msg.path}" download>${msg.name}</a>
-		`
+		`;
+	} else if('user-joined') {
+		newElement.innerHTML=`
+			<span>${msg.username} Joined</span>
+		`;
 	}
 	
 	document.querySelector('.chat').appendChild(newElement);
