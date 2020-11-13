@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const PORT = 8080 || process.env.PORT;
+const PORT = 5000 || process.env.PORT;
 const publicPath = path.join(__dirname, 'public');
 
 app.use(express.static(publicPath));
