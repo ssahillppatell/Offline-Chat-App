@@ -6,12 +6,24 @@
 
 	<title>myChat</title>
 
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
 	<link rel="shortcut icon" href="#" type="image/x-icon">
 	<link rel="stylesheet" href="./css/indexCss.css">
 </head>
 <body>
 	<form id = "joinChat" action="chat.html">
-		<label for="username">Enter Username:</label> <br>
+		<div class="note">
+			<div><b>Notes: </b></div>
+			<ul>
+				<li>Username will be displayed above your every message.</li>
+				<li>By pressing join, you will be redirected to the chat.</li>
+				<li>Refreshing the chat page will clear the chat.</li>
+				<li>Files on the server will be deleted every midnight.</li>
+			</ul>
+		</div>
+		<br>
+		<label for="username"><b>Enter Username:</b></label> <br>
 		<input type="text" name="username" required> <br>
 		<input type="submit" value="Join">
 	</form>

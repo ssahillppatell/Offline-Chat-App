@@ -1,10 +1,15 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
+
+	font-family: 'Montserrat', sans-serif;
 }
 
 body {
-	background-color: #ccc;
+	background-image: url('../images/_gif__simple_wallpaper_by_shortyshrimp-d8yt221.png');
+	background-size: cover;
+	background-attachment: fixed;
 
 	.sectionName {
 		margin-top: 5vh;
@@ -20,28 +25,88 @@ body {
 		padding: 2em;
 
 		background-color: white;
+		background-image: url('../images/Background.max-x-PIC-MCH043354.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+
 		border-radius: 2px;
+		border: 2px solid rgb(151, 151, 151);
 
 		.chat {
+			margin-top: 1vh;
+
 			.message {
 				padding: 0.5em;
-				background-color: #ccc;
+				background-color: white;
 				margin-bottom: 1vh;
 				overflow: hidden;
 			}
 	
 			img {
-				width: 25vw;
+				width: 20vw;
 				height: auto;
 			}
+		}
+
+		#newMessage {
+			margin-top: 2vh;
+
+			input[type = "text"] {
+				width: 80%;
+				height: 4vh;
+			}
+
+			input[type = "submit"] {
+				width: 20%;
+				height: 4vh;
+
+				background-color: #dcf8c6;
+				border: 1px solid #009688;
+			}
+		}
+
+		.mediaAttach {
+			margin-top: 2vh;
+			padding: 3vh 2vw;
+			display: grid;
+			grid-template-columns: auto auto;
+
+			background-color: white;
+			border: 1px solid #000;
+
+			#attachImage, #attachFile {
+				input[type = "submit"] {
+					width: 50%;
+					height: 4vh;
+
+					background-color: #dcf8c6;
+					border: 1px solid #009688;
+				}
+			}
+
 		}
 	}
 }
 
 @media (max-width: 1000px) {
 	body {
+		background-size: auto;
+
 		.chat-container {
 			margin-top: 0;
+			padding: 1em;
+
+			.chat {
+				img {
+					width: 25vw;
+				}
+			}
+
+			.mediaAttach {
+				grid-template-columns: auto;
+				grid-template-rows: auto auto;
+				grid-gap: 1vh;
+			}
 		}
 	}
 }

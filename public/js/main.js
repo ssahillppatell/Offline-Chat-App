@@ -18,7 +18,16 @@ socket.on('connect', () => {
 
 socket.on('add-message', (msg) => {
 	addMessage(msg);
+	progress = 0;
 });
+
+const sentOrReceived = () => {
+	if(progress == 0 || progress == 100) {
+		return "Received";
+	} else {
+		return progress;
+	}
+}
 
 const addMessage = (msg) => {
 	let newElement = document.createElement('div');
@@ -26,27 +35,25 @@ const addMessage = (msg) => {
 
 	if(msg.type == "text") {
 		newElement.innerHTML=`
-			<span>${msg.username} ${msg.time}</span><br>
+		<span><b>${msg.username} <small>${msg.time}</small></b></span><br>
 			<span>${msg.text}</span>
 		`;
 	} else if(msg.type == 'image') {
 		newElement.innerHTML = `
-			<span>${msg.username} ${msg.time}</span><br>
+			<span><b>${msg.username} <small>${msg.time}</small></b></span><br>
 			<img src = "${msg.data}" />
 		`;
 	} else if(msg.type == 'file') {
-		progress = 0;
 		newElement.innerHTML=`
-			<span>${msg.username} ${msg.time}</span><br>
-			<span class = ${msg.id}>${progress || "Received"}</span>
+		<span><b>${msg.username} <small>${msg.time}</small></b></span><br>
+			<span class = ${msg.id}>${sentOrReceived()}</span>
 			<a href="${msg.path}" download>${msg.name}</a>
 		`;
 	} else if('user-joined') {
 		newElement.innerHTML=`
-			<span>${msg.username} Joined</span>
+			<span><b>${msg.username} Joined</b></span>
 		`;
 	}
-	
 	document.querySelector('.chat').appendChild(newElement);
 };
 
@@ -79,6 +86,7 @@ attachImage.addEventListener('submit', (e) => {
 attachFile.addEventListener('submit', (e) => {
 	e.preventDefault();
 
+	progress = 0;
 	let file = e.target.elements.file.files[0];
 	let stream = ss.createStream();
 	let spanId = spanClass();
@@ -96,7 +104,6 @@ attachFile.addEventListener('submit', (e) => {
 	blobStream.on('data', (chunk) => {
 		size += chunk.length;
 		progress = Math.floor(size / file.size * 100);
-		console.log(progress);
 		document.querySelector(`.${spanId}`).innerText = `${progress}%`
 	});
 

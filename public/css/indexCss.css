@@ -1,17 +1,36 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background-color: #ccc;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  background-image: url("../images/_gif__simple_wallpaper_by_shortyshrimp-d8yt221.png");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body #joinChat {
-  padding: 2vw 2vh;
-  width: 50vw;
-  margin: 30vh auto 0 auto;
+  padding: 3vh 2vw;
+  width: 32vw;
+  height: 40vh;
+  border-radius: 2px;
   background-color: white;
+}
+
+body #joinChat .note ul {
+  margin-top: 1vh;
+  list-style: none;
+  font-size: 0.9em;
+}
+
+body #joinChat .note ul li::before {
+  content: '- ';
 }
 
 body #joinChat label {
@@ -19,18 +38,25 @@ body #joinChat label {
 }
 
 body #joinChat input[type="text"] {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   width: 100%;
+  height: 5vh;
 }
 
 body #joinChat input[type="submit"] {
-  margin-top: 2vh;
   width: 100%;
   padding: 1vh;
 }
 
 @media (max-width: 1000px) {
+  body {
+    background-size: auto;
+  }
   body #joinChat {
-    width: 80vw;
+    width: 75vw;
+    height: 55vh;
+    padding: 3vh 4vw;
   }
 }
 /*# sourceMappingURL=indexCss.css.map */
