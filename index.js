@@ -6,6 +6,8 @@ const express = require('express');
 const socketIo = require('socket.io');
 const ss = require('socket.io-stream');
 const moment = require('moment');
+const cron = require('node-cron');
+const shell = require('shelljs');
 
 const app = express();
 const server = http.createServer(app);
@@ -52,4 +54,10 @@ io.on('connection', (socket) => {
 
 server.listen(PORT, () => {
 	console.log(`Listening on ${PORT}`);
+});
+
+cron.schedule(`0 0 0 * * *`, () => {
+	if(shell.exec(`node cron-job.js`).code) {
+		console.log("Something went wrong!");
+	}
 });
