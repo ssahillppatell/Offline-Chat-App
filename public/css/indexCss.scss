@@ -10,7 +10,7 @@ body {
 	display: grid;
 	place-items: center;
 
-	background-image: url('../images/_gif__simple_wallpaper_by_shortyshrimp-d8yt221.png');
+	background-image: url('../images/indexBG.png');
 	background-size: cover;
 	background-attachment: fixed;
 	
@@ -18,6 +18,7 @@ body {
 		padding: 3vh 2vw;
 		width: 32vw;
 		height: 40vh;
+		margin-top: 20vh;
 
 		border-radius: 2px;
 		background-color: white;
